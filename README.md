@@ -17,9 +17,6 @@ var LoginRegime = respublica.Regime({
     LoginUndertaker.doLogin(user).then(this.onLogin);
   },
   onLogin: function () {
-    // Say login diplomat login's successful.
-    LoginDiplomat.message('loggedIn', true);
-    
     // Publish message to representatives
     this.publish('loggedIn', true);
   }
@@ -67,13 +64,12 @@ var LoginRepresentative = LoginCulture.Representative({
 });
 
 var LoginDiplomat = LoginRegime.Diplomat({
-  onMessage: function (message, data) {
-    switch (message) {
-      case: 'loggedIn':
-        // Say popup diplomat login status.
-        PopupDiplomat.message('loggedIn', data);
-        break;
-    }
+  onAppoint: function () {
+    this.regime.listen('loggedIn', this.onLogin);
+  },
+  onLogin: function (data) {
+    // Say popup diplomat login status.
+    PopupDiplomat.message('loggedIn', data);
   }
 });
 ```
