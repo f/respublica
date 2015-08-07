@@ -10,7 +10,7 @@ var LoginRegime = respublica.Regime({
     // on regime rise
   },
   doLogin: function (username, password) {
-    var user = new UserStereotype({
+    var user = new LoginStereotype({
       username: username,
       password: password
     });
