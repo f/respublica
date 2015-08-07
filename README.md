@@ -26,14 +26,14 @@ var AJAXSatellite = respublica.Satellite({
   onLaunch: function () {
     // on satellite launched.
   },
-  login: function (username, password) {
-    return http.request('/login', {});
+  post: function () {
+    // impl. ajax post.
   }
 });
 
 var LoginUndertaker = LoginRegime.Undertaker({
   doLogin: function (user) {
-    return AJAXSatellite.login(user).then(this.done);
+    return AJAXSatellite.post('/login', user).then(this.done);
   }
 });
 
