@@ -58,8 +58,10 @@ var LoginCulture = LoginRegime.Culture({
 });
 
 var LoginRepresentative = LoginCulture.Representative({
-  doLogin: function (user) {
+  onAppoint: function () {
     this.regime.listen('loggedIn', this.publish); // forward regime's message to culture
+  },
+  doLogin: function (user) {
     this.regime.doLogin(user.username, user.password);
   }
 });
