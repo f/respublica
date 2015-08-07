@@ -10,7 +10,11 @@ var LoginRegime = respublica.Regime({
     // on regime rise
   },
   doLogin: function (username, password) {
-    LoginUndertaker.doLogin(username, password).then(this.onLogin);
+    var user = new UserStereotype({
+      username: username,
+      password: password
+    });
+    LoginUndertaker.doLogin(user).then(this.onLogin);
   },
   onLogin: function () {
     // Say login diplomat login's successful.
@@ -31,11 +35,7 @@ var AJAXSatellite = respublica.Satellite({
 });
 
 var LoginUndertaker = LoginRegime.Undertaker({
-  doLogin: function (username, password) {
-    var user = new UserStereotype({
-      username: username,
-      password: password
-    });
+  doLogin: function (user) {
     return AJAXSatellite.login(user).then(this.done);
   }
 });
