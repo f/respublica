@@ -5,6 +5,37 @@ Respublica is a framework based on *Vieux UI development architecture*. For more
 ## Overview
 
 ```javascript
+function AJAXSatellite() {
+  
+}
+
+function LoginRegime() {
+  
+}
+
+function LoginUndertaker() {
+
+}
+
+function LoginCulture() {
+
+}
+
+function LoginRepresentative() {
+
+}
+
+function LoginDiplomat(regime) {
+  
+}
+
+respublica.
+  satellite(AJAXSatellite).
+  regime(LoginRegime).
+  undertaker(LoginUndertaker)
+
+
+
 var LoginRegime = respublica.Regime({
   onRise: function () {
     // on regime rise
